@@ -1,1 +1,1 @@
-# search-app
+# This project is build using webpack & babel.
