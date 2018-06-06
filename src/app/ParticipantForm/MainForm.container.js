@@ -17,10 +17,12 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export const MainFormContainer = props => {
-  return <MainForm />;
+export const MainFormContainer = ({ handleSubmit }) => {
+  return <MainForm onSubmit={submitForm} handleSubmit={handleSubmit} />;
 };
-
+const submitForm = formValues => {
+  console.log("submitting Form: ", formValues);
+};
 const formConfiguration = {
   form: "my-very-own-form"
 };
