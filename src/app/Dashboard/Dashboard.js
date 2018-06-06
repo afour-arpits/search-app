@@ -15,7 +15,6 @@ export default class Dashboard extends Component {
       itemsPerPage: 8,
       listItems: [],
       itemAllPages: []
-
     };
     this.handleFilterChange = this.handleFilterChange.bind(this);
     this.changePage = this.changePage.bind(this);

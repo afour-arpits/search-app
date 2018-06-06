@@ -1,6 +1,6 @@
 import Loadable from 'react-loadable';
-import Loading from '../Components/Loading/Loading.jsx'
-const fn = () => import('./Dashboard.jsx');
+import Loading from '../Components/Loading/Loading'
+const fn = () => import('./Dashboard');
 
 const AsyncDashboard = Loadable({
   loader: fn,
