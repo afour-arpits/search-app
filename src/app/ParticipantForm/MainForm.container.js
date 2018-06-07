@@ -1,34 +1,21 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { reduxForm } from "redux-form";
+import { addUser, getUserList } from "../Actions";
 import MainForm from "./MainForm";
 
-const mapStateToProps = state => {
-  return {
-    // fields: state.fields
-  };
+export const MainFormContainer = ({ dispatch }) => {
+  return (
+    <MainForm
+      onSubmit={(formValues, dispatch) => {
+        dispatch(addUser(formValues));
+        dispatch(getUserList());
+      }}
+    />
+  );
 };
-
-const mapDispatchToProps = dispatch => {
-  return {
-    // onTodoClick: id => {
-    //   dispatch(toggleTodo(id))
-    // }
-  };
+MainFormContainer.propTypes = {
+  dispatch: PropTypes.func.isRequired
 };
-
-export const MainFormContainer = ({ handleSubmit }) => {
-  return <MainForm onSubmit={submitForm} handleSubmit={handleSubmit} />;
-};
-const submitForm = formValues => {
-  console.log("submitting Form: ", formValues);
-};
-const formConfiguration = {
-  form: "my-very-own-form"
-};
-
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(MainForm);
-export default reduxForm(formConfiguration)(MainFormContainer);
+export default connect()(MainFormContainer);

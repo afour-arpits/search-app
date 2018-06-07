@@ -7,25 +7,30 @@ import "./App.scss";
 import AsyncDashboard from "./Dashboard/AsyncDashboard";
 import TodoListContainer from "./Todo/TodoList.container";
 import MainFormContainer from "./ParticipantForm/MainForm.container";
+import Home from "./Home/Home";
+import Header from "./Components/Header";
 
 class App extends Component {
   render() {
     console.log(this.props.history);
     return (
-      // <Router history={this.props.history}>
       <div>
-        <Link to={"dashboard"}>Dashboard</Link>
-        <br />
-        {/*<a href="/todo">todo</a>*/}
-        <Link to={"todo"}>Todo</Link>
-        <br />
-        <Link to={"participantform"}>Participant Form</Link>
-
-        <Route path="/dashboard" component={AsyncDashboard} />
-        <Route path="/todo" component={TodoListContainer} />
-        <Route path="/participantform" component={MainFormContainer} />
+        <Header />
+        <div>
+          <Link to={"dashboard"}>Dashboard</Link>
+          <br />
+          <Link to={"todo"}>Todo</Link>
+          <br />
+          <Link to={"/"}>Home</Link>
+          <br />
+          <Link to={"/participantform"}>Form</Link>
+          <Route exact path="/" component={Home} />
+          <Route path="/dashboard" component={AsyncDashboard} />
+          <Route path="/todo" component={TodoListContainer} />
+          <Route path="/participantform" component={MainFormContainer} />
+        </div>
+        <footer />
       </div>
-      // </Router>
     );
   }
 }

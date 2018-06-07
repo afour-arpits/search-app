@@ -1,6 +1,19 @@
 @import '~bootstrap/scss/bootstrap.scss';
 div {
   h1 {
-    color: red;
+    // color: red;
   }
+}
+
+input:valid {
+  border-color: none !important;
+}
+
+input:invalid {
+  border-color: #dc3545 !important;
+}
+
+input:-webkit-autofill {
+  box-shadow: 0 0 0 1000px white inset !important;
+  -webkit-box-shadow: 0 0 0 1000px white inset !important;
 }

@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types'
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
-import MainPanel from '../Components/MainPanel';
-import * as constants from '../Components/utils/constants';
+import MainPanel from "../Components/MainPanel";
+import * as constants from "../Components/utils/constants";
+import { loadState, saveState, getItem } from "../Api/localStorage";
 
 export default class Dashboard extends Component {
   constructor(props) {
     super(props);
-    this.listItems = constants.LIST_ITEMS;
+    this.listItems = loadState().users;
     this.listMeta = constants.LIST_META;
     this.state = {
       filterText: "",
@@ -22,15 +23,15 @@ export default class Dashboard extends Component {
     this.getPagedList = this.getPagedList.bind(this);
   }
   /**
-  * fired when there is an update to the filter(on enter and button click).
-  * @returns {Array}
-  */
+   * fired when there is an update to the filter(on enter and button click).
+   * @returns {Array}
+   */
   handleFilterChange(value) {
     let itemAllPages = this.getFilteredList(value);
-    let filteredList = this.getPagedList(itemAllPages, 1);//reset to page 1 on filtering
+    let filteredList = this.getPagedList(itemAllPages, 1); //reset to page 1 on filtering
     this.setState({
       filterText: value,
-      currentPage: 1,//reset to page 1 on filtering
+      currentPage: 1, //reset to page 1 on filtering
       listItems: filteredList,
       itemAllPages: itemAllPages
     });
@@ -44,15 +45,21 @@ export default class Dashboard extends Component {
     if (value && value.trim().length !== 0) {
       this.listItems.map((listItem, i) => {
         this.listMeta.map((metaItem, i) => {
-          if (listItem[metaItem.key].toString().trim().toLowerCase().indexOf(value.toLowerCase()) !== -1) {
+          if (
+            listItem[metaItem.key]
+              .toString()
+              .trim()
+              .toLowerCase()
+              .indexOf(value.toLowerCase()) !== -1
+          ) {
             filteredList.push(listItem);
           }
           return true;
-        })
+        });
         return true;
-      })
+      });
     }
-    filteredList = [...(new Set(filteredList))];
+    filteredList = [...new Set(filteredList)];
     return filteredList;
   }
   /**
@@ -72,7 +79,7 @@ export default class Dashboard extends Component {
    */
   changePage(event) {
     let filterList = this.getFilteredList(this.state.filterText);
-    let pagedList = this.getPagedList(filterList, Number(event.target.id))
+    let pagedList = this.getPagedList(filterList, Number(event.target.id));
     this.setState({
       currentPage: Number(event.target.id),
       listItems: pagedList
@@ -85,10 +92,16 @@ export default class Dashboard extends Component {
    */
   render() {
     return (
-      <MainPanel filterText={this.state.filterText} handleFilterChange={this.handleFilterChange}
-        listItems={this.state.listItems} listMeta={this.listMeta} itemAllPages={this.state.itemAllPages}
-        currentPage={this.state.currentPage} itemsPerPage={this.state.itemsPerPage}
-        changePage={this.changePage} />
+      <MainPanel
+        filterText={this.state.filterText}
+        handleFilterChange={this.handleFilterChange}
+        listItems={this.state.listItems}
+        listMeta={this.listMeta}
+        itemAllPages={this.state.itemAllPages}
+        currentPage={this.state.currentPage}
+        itemsPerPage={this.state.itemsPerPage}
+        changePage={this.changePage}
+      />
     );
   }
 }
