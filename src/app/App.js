@@ -12,16 +12,10 @@ import Header from './Components/Header'
 
 class App extends Component {
   render() {
-    console.log(this.props.history);
     return (
       <div>
         <Header></Header>
         <div>
-          <Link to={'dashboard'}>Dashboard</Link>
-          <br />
-          <Link to={'todo'}>Todo</Link>
-          <br />
-          <Link to={'/'}>Home</Link>
           <Route exact path="/" component={Home}></Route>
           <Route path="/dashboard" component={AsyncDashboard}></Route>
           <Route path="/todo" component={TodoListContainer}></Route>

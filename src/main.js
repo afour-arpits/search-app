@@ -7,25 +7,26 @@ import {
   createStore, applyMiddleware
 } from 'redux'
 import { ConnectedRouter, routerMiddleware } from 'react-router-redux'
-import createHistory from 'history/createBrowserHistory'
 
 import rootReducer from './app/Reducers'
 
+import { createInitialStore, history } from './configureStore';
+
 // Create a history of your choosing (we're using a browser history in this case)
-const history = createHistory()
+// const history = createHistory()
 
 // Build the middleware for intercepting and dispatching navigation actions
 // const middleware = routerMiddleware(history)
 
-const store = createStore(rootReducer,
-  // applyMiddleware(middleware),
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-)
+// const store = createStore(rootReducer,
+//   // applyMiddleware(middleware),
+//   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+// )
 
 history.listen(location => console.log(location.pathname))
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store={createInitialStore()}>
     <ConnectedRouter history={history}>
       <App />
     </ConnectedRouter>

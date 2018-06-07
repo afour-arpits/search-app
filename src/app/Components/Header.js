@@ -37,10 +37,13 @@ export default class Header extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <Link to={'dashboard'}>Dashboard</Link>
+                <Link className="nav-link" to={'/'}>Home</Link>
               </NavItem>
               <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+                <Link className="nav-link" to={'todo'}>Todo</Link>
+              </NavItem>
+              <NavItem>
+                <Link className="nav-link" to={'dashboard'}>Dashboard</Link>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
@@ -48,7 +51,7 @@ export default class Header extends Component {
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem>
-                    Option 1
+                    <Link className="" to={'participantform'}>Participant Form</Link>
                   </DropdownItem>
                   <DropdownItem>
                     Option 2
