@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   Collapse,
   Navbar,
@@ -11,8 +11,8 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem
-} from 'reactstrap';
-import { Route, Link, Switch } from 'react-router-dom'
+} from "reactstrap";
+import { Route, Link, Switch } from "react-router-dom";
 
 export default class Header extends Component {
   constructor(props) {
@@ -37,10 +37,19 @@ export default class Header extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <Link to={'dashboard'}>Dashboard</Link>
+                <Link className="nav-link" to={"/"}>
+                  Home
+                </Link>
               </NavItem>
               <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+                <Link className="nav-link" to={"participantform"}>
+                  Participant Form
+                </Link>
+              </NavItem>
+              <NavItem>
+                <Link className="nav-link" to={"dashboard"}>
+                  Dashboard
+                </Link>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
@@ -48,15 +57,12 @@ export default class Header extends Component {
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem>
-                    Option 1
-                  </DropdownItem>
-                  <DropdownItem>
-                    Option 2
+                    <Link className="" to={"todo"}>
+                      Todo
+                    </Link>
                   </DropdownItem>
                   <DropdownItem divider />
-                  <DropdownItem>
-                    Reset
-                  </DropdownItem>
+                  <DropdownItem>Reset</DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
             </Nav>

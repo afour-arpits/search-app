@@ -1,6 +1,6 @@
 import { LOAD_FORM, initFormState } from "../Actions";
 
-const formReducer = (state = initFormState, action) => {
+const formReducer = (state = { ...initFormState }, action) => {
   switch (action.type) {
     case LOAD_FORM:
       return { ...state, data: action.data };

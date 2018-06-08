@@ -170,9 +170,9 @@ const formConfiguration = {
 MainForm = reduxForm(formConfiguration)(MainForm);
 MainForm = connect(
   state => ({
-    initialValues: state.formReducer // pull initial values from account reducer
+    initialValues: state.formReducer // pull initial values from formReducer reducer
   }),
-  { loadFormData: loadFormData } // bind account loading action creator
+  { loadFormData: loadFormData } // bind account loading form creator
 )(MainForm);
 
 export default MainForm;
