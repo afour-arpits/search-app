@@ -46,120 +46,133 @@ let MainForm = props => {
 
   const { handleSubmit, pristine, reset, invalid, submitting } = props;
   return (
-    <div className="col-md-12 col-sm-12 p-4">
+    <div className="col-md-12 col-sm-12 p-4 m-auto">
       <h3 className="">Trials Participation Form</h3>
       <Form onSubmit={handleSubmit}>
-        <Field
-          label="First Name"
-          validate={[required, maxLength15, minLength2]}
-          name="firstName"
-          type="test"
-          id="firstName"
-          placeholder="First Name"
-          component={FormField}
-        />
-        <Field
-          label="Last Name"
-          name="lastName"
-          type="text"
-          id="lastName"
-          placeholder="Last Name"
-          component={FormField}
-        />
-        <Field
-          label="Email ID"
-          name="email"
-          type="email"
-          id="email"
-          validate={[required, email]}
-          placeholder="Email ID"
-          component={FormField}
-        />
-        <Field
-          label="Phone"
-          name="phone"
-          type="tel"
-          id="phone"
-          validate={[required, phoneNumber]}
-          placeholder="Phone"
-          component={FormField}
-        />
-        <Field
-          label="Date of Birth"
-          name="dob"
-          type="date"
-          id="dob"
-          validate={[required]}
-          placeholder="Date of Birth"
-          component={FormField}
-        />
-        <Field
-          label="Maritial Status"
-          name="married"
-          type="select"
-          id="married"
-          placeholder="Maritial Status"
-          component={FormField}
-        >
-          <option>Single</option>
-          <option>Married</option>
-        </Field>
-        <FormGroup tag="fieldset">
-          <Label for="gender">Gender</Label>
-          <FormGroup check>
-            <Label check>
-              <Field
-                component="input"
-                type="radio"
-                name="gender"
-                value="male"
-                checked="true"
-              />{" "}
-              Male
-            </Label>
-          </FormGroup>
-          <FormGroup check>
-            <Label check>
-              <Field
-                component="input"
-                type="radio"
-                name="gender"
-                value="female"
-              />{" "}
-              Female
-            </Label>
-          </FormGroup>
-          <FormGroup check>
-            <Label check>
-              <Field
-                component="input"
-                type="radio"
-                name="gender"
-                value="other"
-              />{" "}
-              Other
-            </Label>
-          </FormGroup>
-        </FormGroup>
-        <Field
-          label="Diseases History"
-          name="diseases"
-          type="select"
-          multiple
-          id="diseases"
-          placeholder="Diseases History"
-          component={FormField}
-        >
-          {diseasesList.map(diesase => (
-            <option key={diesase}>{diesase}</option>
-          ))}
-        </Field>
-        <Button color="primary" disabled={pristine || invalid || submitting}>
-          Submit
-        </Button>
-        <Button className="ml-1" color="secondary" onClick={reset}>
-          Reset
-        </Button>
+        <div className="row">
+          <div className="col-md-5 col-sm-5 m-auto">
+            <Field
+              label="First Name"
+              validate={[required, maxLength15, minLength2]}
+              name="firstName"
+              type="test"
+              id="firstName"
+              placeholder="First Name"
+              component={FormField}
+            />
+            <Field
+              label="Last Name"
+              name="lastName"
+              type="text"
+              id="lastName"
+              placeholder="Last Name"
+              component={FormField}
+            />
+            <Field
+              label="Email ID"
+              name="email"
+              type="email"
+              id="email"
+              validate={[required, email]}
+              placeholder="Email ID"
+              component={FormField}
+            />
+            <Field
+              label="Phone"
+              name="phone"
+              type="tel"
+              id="phone"
+              validate={[required, phoneNumber]}
+              placeholder="Phone"
+              component={FormField}
+            />
+            <Field
+              label="Date of Birth"
+              name="dob"
+              type="date"
+              id="dob"
+              validate={[required]}
+              placeholder="Date of Birth"
+              component={FormField}
+            />
+          </div>
+          <div className="col-md-5 col-sm-5 m-auto">
+            <Field
+              label="Maritial Status"
+              name="married"
+              type="select"
+              id="married"
+              placeholder="Maritial Status"
+              component={FormField}
+            >
+              <option>Single</option>
+              <option>Married</option>
+            </Field>
+            <FormGroup tag="fieldset">
+              <Label for="gender">Gender</Label>
+              <FormGroup check>
+                <Label check>
+                  <Field
+                    component="input"
+                    type="radio"
+                    name="gender"
+                    value="male"
+                    checked="true"
+                  />{" "}
+                  Male
+                </Label>
+              </FormGroup>
+              <FormGroup check>
+                <Label check>
+                  <Field
+                    component="input"
+                    type="radio"
+                    name="gender"
+                    value="female"
+                  />{" "}
+                  Female
+                </Label>
+              </FormGroup>
+              <FormGroup check>
+                <Label check>
+                  <Field
+                    component="input"
+                    type="radio"
+                    name="gender"
+                    value="other"
+                  />{" "}
+                  Other
+                </Label>
+              </FormGroup>
+            </FormGroup>
+            <Field
+              label="Diseases History"
+              name="diseases"
+              type="select"
+              multiple
+              id="diseases"
+              placeholder="Diseases History"
+              component={FormField}
+            >
+              {diseasesList.map(diesase => (
+                <option key={diesase}>{diesase}</option>
+              ))}
+            </Field>
+          </div>
+        </div>
+        <div className="row">
+          <div className="m-auto">
+            <Button
+              color="primary"
+              disabled={pristine || invalid || submitting}
+            >
+              Submit
+            </Button>
+            <Button className="ml-1" color="secondary" onClick={reset}>
+              Reset
+            </Button>
+          </div>
+        </div>
       </Form>
     </div>
   );

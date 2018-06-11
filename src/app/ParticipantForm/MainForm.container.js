@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { reduxForm } from "redux-form";
-import { addUser, getUserList } from "../Actions";
+import { loadFormData, addUser, getUserList } from "../Actions";
 import MainForm from "./MainForm";
-
 export const MainFormContainer = ({ dispatch }) => {
+  //let load = dispatch(loadFormData());
+  // console.log(load);
+  // load.then(response => {
   return (
     <MainForm
       onSubmit={(formValues, dispatch) => {
@@ -14,6 +16,7 @@ export const MainFormContainer = ({ dispatch }) => {
       }}
     />
   );
+  // });
 };
 MainFormContainer.propTypes = {
   dispatch: PropTypes.func.isRequired
